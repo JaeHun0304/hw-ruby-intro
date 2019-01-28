@@ -66,19 +66,17 @@ def starts_with_consonant? s
 
   elsif s.slice(0) == /[aeiouAEIOU]/
   	return false
-  end
 
   elsif s.slice(0) != /[[:alpha:]]/
   	return false
-  end
 
   elsif s.slice(0) == /[[:alpha:]]/ && s.slice(0) != /[aeiouAEIOU]/
     return true
-  end
 
   else
     return false
   end
+
 end
 
 def binary_multiple_of_4? s
