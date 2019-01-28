@@ -25,10 +25,8 @@ def max_2_sum arr
   	return arr.first
   end
 
-else
 	arr.sort
 	max_2_sum = arr[arr.length-1] + arr[arr.length-2]
-end
 end
 
 def sum_to_n? arr, n
