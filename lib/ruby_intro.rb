@@ -21,7 +21,7 @@ def max_2_sum arr
   	return 0
   end
 
-  elsif arr.length ==1
+  if arr.length ==1
   	return arr.first
   end
 
