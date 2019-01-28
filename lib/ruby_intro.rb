@@ -8,9 +8,11 @@ if arr.length == 0
     return 0
 end
 
-for i in 0..arr.length-1
+sum_of_all = 0
+for i in arr
   sum_of_all += arr[i]
 end
+
   return sum_of_all
 end
 
@@ -61,22 +63,19 @@ end
 
 def starts_with_consonant? s
   # YOUR CODE HERE
-  if s == ''
+  if s.length == 0 || s == nil
     return false
-
-  elsif s.slice(0) == /[aeiouAEIOU]/
-    return false
-
-  elsif s.slice(0) != /[[:alpha:]]/
-    return false
-
-  elsif s.slice(0) == /[[:alpha:]]/ && s.slice(0) != /[aeiouAEIOU]/
-    return true
-
-  else
+  end
+  
+  if (s.slice(0) =~ /[[:alpha:]]/) == nil
     return false
   end
 
+  if (s.slice(0) =~ /[aeiouAEIOU]/) == 0
+    return false
+  end
+
+  return true
 end
 
 def binary_multiple_of_4? s
@@ -85,13 +84,16 @@ def binary_multiple_of_4? s
   if s.length == 0
     return false
   end
-
-  if (s =~ /[01]/) == nil
-    return false
+  
+  for i in 0..(s.length-1)
+    if (s[i] =~ /[01]/) == nil
+      return false
+    end
   end
 
-  for i in s.length-1..0
-      if(s[i] == 1)
+  decimal = 0
+  for i in (s.length-1).downto(0)
+      if(s[i] == '1')
         decimal += 2**(i)
       end
   end
@@ -100,7 +102,6 @@ def binary_multiple_of_4? s
     return true
   end
 
-  return false
 end
 
 # Part 3
@@ -109,17 +110,18 @@ class BookInStock
 # YOUR CODE HERE
     attr_accessor :isbn
     attr_accessor :price
+    
     def initialize(isbn, price)
       if isbn.length == 0 || price <= 0
           raise ArgumentError
-      end
-
-      self.isbn = isbn
-      self.price = price
+    end
+      @isbn = isbn
+      @price = price
     end
     
     def price_as_string
-      puts '$%.2f' % price.to_d.truncate(2)
+      price_string = ""
+      price_string = "$%.2f" % price
     end
-    
+
 end
